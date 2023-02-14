@@ -61,4 +61,19 @@ public class Quote {
     public void setAuthor(User author) {
         this.author = author;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "{\n" +
+                "   \"id\" : " + "\"" + id + "\"" + ",\n" +
+                "   \"content\" : " + "\"" + content + "\"" + ",\n" +
+                "   \"dateOfUpdate\" : " + "\"" + dateOfUpdate + "\"" + ",\n" +
+                "   \"quoteRating\" : " + quoteRating + ",\n" +
+                "   \"author\" : " + author + "\n" +
+                '}';
+    }
 }

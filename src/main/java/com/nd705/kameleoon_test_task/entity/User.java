@@ -66,4 +66,19 @@ public class User {
     public void setDateOfCreation(Date date) {
         this.dateOfCreation = date;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "{\n" +
+                "   \"id\" : " + "\"" + id + "\"" + ",\n" +
+                "   \"name\" : " + "\"" + name + "\""  + ",\n" +
+                "   \"email\" : " + "\"" + email + "\"" + ",\n" +
+                "   \"password\" : " + "\"" + password + "\"" + ",\n" +
+                "   \"dateOfCreation\" : " + "\"" + dateOfCreation + "\"" + ",\n" +
+                '}';
+    }
 }
