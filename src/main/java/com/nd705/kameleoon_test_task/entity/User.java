@@ -2,6 +2,7 @@ package com.nd705.kameleoon_test_task.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -62,7 +63,7 @@ public class User {
         return dateOfCreation;
     }
 
-    public void setDateOfCreation(Date dateOfCreation) {
-        this.dateOfCreation = dateOfCreation;
+    public void setDateOfCreation(Date date) {
+        this.dateOfCreation = date;
     }
 }
