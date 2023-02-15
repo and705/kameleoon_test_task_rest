@@ -7,6 +7,7 @@ import com.nd705.kameleoon_test_task.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,12 +59,20 @@ public class QuoteServiceImpl implements QuoteService{
 
 
     @Override
-    public List<Quote> getTop() {
-        return null;
+    public List<Quote> getTop(int n) {
+        return quoteRepository.findAll().stream()
+                .sorted(Comparator.comparingInt(Quote::getQuoteRating).reversed())
+                .limit(n)
+                .map(Quote::newQuote)
+                .toList();
     }
 
     @Override
-    public List<Quote> getWorse() {
-        return null;
+    public List<Quote> getWorse(int n) {
+        return quoteRepository.findAll().stream()
+                .sorted(Comparator.comparingInt(Quote::getQuoteRating))
+                .limit(n)
+                .map(Quote::newQuote)
+                .toList();
     }
 }

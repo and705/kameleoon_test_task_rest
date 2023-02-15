@@ -11,7 +11,7 @@ public interface QuoteService {
     public Quote getRandomQuote();
     public void deleteQuote(int id);
     public void voteQuote(int userId, int quoteId, boolean voteUp);
-    public List<Quote> getTop();
-    public List<Quote> getWorse();
+    public List<Quote> getTop(int n);
+    public List<Quote> getWorse(int n);
 
 }

@@ -72,10 +72,15 @@ public class UserController {
     }
 
 
-//
-//    @GetMapping("/getTop")
-//
-//    @GetMapping("/getWorse")
+    @GetMapping("/getTop10")
+    public String getTop10(){
+        return quoteService.getTop(10).toString();
+    }
+
+    @GetMapping("/getWorse10")
+    public String getWorse10(){
+        return quoteService.getWorse(10).toString();
+    }
 
 
 

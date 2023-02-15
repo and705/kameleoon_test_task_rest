@@ -42,6 +42,15 @@ public class Quote {
         this.author = author;
     }
 
+    public Quote(Long id, String content, Date dateOfUpdate, int quoteRating, User author, Set<User> voters) {
+        this.id = id;
+        this.content = content;
+        this.dateOfUpdate = dateOfUpdate;
+        this.quoteRating = quoteRating;
+        this.author = author;
+        this.voters = voters;
+    }
+
     public String getContent() {
         return content;
     }
@@ -95,6 +104,9 @@ public class Quote {
         voters.add(user);
         quoteRating += voteUp? 1:-1;
 
+    }
+    public static Quote newQuote (Quote quote) {
+        return new Quote(quote.getId(), quote.getContent(), quote.getDateOfUpdate(), quote.getQuoteRating(), quote.getAuthor(), quote.getVoters());
     }
 
 
