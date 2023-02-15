@@ -41,3 +41,9 @@ Put("/api/quotes/vote") -  vote
 Get("/api/getTop10") -  get top 10 quotes  
 Get("/api/getWorse10") -  get worse 10 quotes  
 
+## Launch
+
+    java -jar kameleoon_test_task-0.0.1-SNAPSHOT.jar
+
+## Docker
+https://hub.docker.com/r/nd705/kameleoontest
