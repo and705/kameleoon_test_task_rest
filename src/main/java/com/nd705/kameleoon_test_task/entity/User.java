@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 @Entity
@@ -21,6 +23,15 @@ public class User {
     private String password;
     @Column(name = "dateOfCreation")
     private Date dateOfCreation;
+
+    @ManyToMany (cascade=CascadeType.ALL)
+//   @JoinColumn(name = "voters")
+//    @JoinTable(
+//            name= "vote_voter",
+//            joinColumns = @JoinColumn(name = "voters"),
+//            inverseJoinColumns = @JoinColumn(name = "votes")
+//    )
+    private Set<Quote> votes = new TreeSet<>();
 
 
 
@@ -71,6 +82,17 @@ public class User {
         return id;
     }
 
+    public Set<Quote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Set<Quote> votes) {
+        this.votes = votes;
+    }
+
+    public void addVote(Quote quote){
+        votes.add(quote);
+    }
     @Override
     public String toString() {
         return "{\n" +

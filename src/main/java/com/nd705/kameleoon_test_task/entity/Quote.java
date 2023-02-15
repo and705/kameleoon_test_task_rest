@@ -3,6 +3,9 @@ package com.nd705.kameleoon_test_task.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Entity
 @Table(name = "quotes")
@@ -19,6 +22,15 @@ public class Quote {
     @OneToOne
     @JoinColumn(name = "author")
     private User author;
+
+    @ManyToMany (cascade=CascadeType.ALL)
+//    @JoinColumn(name = "votes")
+//    @JoinTable(
+//            name= "vote_voter",
+//            joinColumns = @JoinColumn(name = "votes"),
+//            inverseJoinColumns = @JoinColumn(name = "voters")
+//    )
+    private Set<User> voters = new TreeSet<>();
 
     public Quote() {
     }
@@ -66,6 +78,26 @@ public class Quote {
         return id;
     }
 
+    public Set<User> getVoters() {
+        return voters;
+    }
+
+    public void setVoters(Set<User> voters) {
+        this.voters = voters;
+    }
+
+    public void vote(User user, boolean voteUp){
+        for (User voter:voters){
+            if (voter.getId().equals(user.getId())){
+                return;
+            }
+        }
+        voters.add(user);
+        quoteRating += voteUp? 1:-1;
+
+    }
+
+
     @Override
     public String toString() {
         return "{\n" +
@@ -73,7 +105,7 @@ public class Quote {
                 "   \"content\" : " + "\"" + content + "\"" + ",\n" +
                 "   \"dateOfUpdate\" : " + "\"" + dateOfUpdate + "\"" + ",\n" +
                 "   \"quoteRating\" : " + quoteRating + ",\n" +
-                "   \"author\" : " + author + "\n" +
+                "   \"author\" : " + author.getName() + "\n" +
                 '}';
     }
 }

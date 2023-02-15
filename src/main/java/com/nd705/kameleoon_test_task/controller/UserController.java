@@ -39,9 +39,9 @@ public class UserController {
     }
 
     @GetMapping("/quotes/{id}")
-    public Quote getQuote(@PathVariable int id){
+    public String getQuote(@PathVariable int id){
         Quote quote = quoteService.getQuote(id);
-        return quote;
+        return quote.toString();
     }
 
     @DeleteMapping("/quotes/{id}")
@@ -66,10 +66,9 @@ public class UserController {
 
 
     @PutMapping("/quotes/vote")
-    public Quote voteUpQuote(@RequestParam Long userId, Long quoteId){
-        Quote quote = null;
-
-        return quote;
+    public String voteUpQuote(@RequestParam int userId, @RequestParam int quoteId, @RequestParam boolean voteUp){
+        quoteService.voteQuote(userId, quoteId, voteUp);
+        return "voteUpQuote done";
     }
 
 

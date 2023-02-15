@@ -10,7 +10,7 @@ public interface QuoteService {
     public Quote getQuote(int id);
     public Quote getRandomQuote();
     public void deleteQuote(int id);
-    public Quote voteQuoteUp(int userId, int quoteId);
+    public void voteQuote(int userId, int quoteId, boolean voteUp);
     public List<Quote> getTop();
     public List<Quote> getWorse();
 
